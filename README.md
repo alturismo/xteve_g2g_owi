@@ -16,6 +16,22 @@ Container Path: /tmp/xteve <> /tmp/xteve/ \
 Container Path: /TVH <> /mnt/user/appdata/tvheadend/data/ << not needed if no TVHeadend is used \
 while /mnt/user/appdata/ should fit to your system path ...
 
+```
+docker run -d \
+  --name=xteve_g2g_owi \
+  --net=host \
+  --log-opt max-size=10m \
+  --log-opt max-file=3 \
+  -e TZ="Europe/Berlin" \
+  -v /mnt/user/appdata/xteve/:/root/.xteve:rw \
+  -v /mnt/user/appdata/xteve/_config/:/config:rw \
+  -v /mnt/user/appdata/xteve/_guide2go/:/_guide2go:rw \
+  -v /mnt/user/appdata/xteve/_owi2plex/:/_owi2plex:rw \
+  -v /tmp/xteve/:/tmp/xteve:rw \
+  -v /mnt/user/appdata/tvheadend/data/:/TVH \
+  alturismo/xteve_g2g_owi
+```
+
 setup guide2go SD subscrition as follows or copy your existing .json files into your mounted /guide2go folder \
 docker exec -it "dockername" guide2go -configure /guide2go/"your_epg_name".json
 
