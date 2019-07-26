@@ -25,8 +25,8 @@ docker run -d \
   -e TZ="Europe/Berlin" \
   -v /mnt/user/appdata/xteve/:/root/.xteve:rw \
   -v /mnt/user/appdata/xteve/_config/:/config:rw \
-  -v /mnt/user/appdata/xteve/_guide2go/:/_guide2go:rw \
-  -v /mnt/user/appdata/xteve/_owi2plex/:/_owi2plex:rw \
+  -v /mnt/user/appdata/xteve/_guide2go/:/guide2go:rw \
+  -v /mnt/user/appdata/xteve/_owi2plex/:/owi2plex:rw \
   -v /tmp/xteve/:/tmp/xteve:rw \
   -v /mnt/user/appdata/tvheadend/data/:/TVH \
   alturismo/xteve_g2g_owi
