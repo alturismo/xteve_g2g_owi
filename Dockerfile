@@ -56,8 +56,8 @@ ADD watch.sh /
 # Add Fix
 COPY ./owi2plex.py /usr/bin/owi2plex.py
 
-# Add php7 index
-COPY ./index.html /phpserver/index.html
+# Add php7 index file
+COPY ./index.php /phpserver/index.php
 
 # Set executable permissions
 RUN chmod +x /entrypoint.sh
