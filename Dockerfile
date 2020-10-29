@@ -51,13 +51,11 @@ ADD entrypoint.sh /
 ADD sample_cron.txt /
 ADD sample_xteve.txt /
 ADD sample_php.txt /
+ADD index.php /
 ADD watch.sh /
 
 # Add Fix
 COPY ./owi2plex.py /usr/bin/owi2plex.py
-
-# Add php7 index file
-COPY ./index.php /phpserver/index.php
 
 # Set executable permissions
 RUN chmod +x /entrypoint.sh
