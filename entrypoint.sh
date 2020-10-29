@@ -24,6 +24,17 @@ else
 	cp /sample_cron.txt /config/sample_cron.txt
 fi
 
+PHP_FILE=/config/php.txt
+
+if [ -f "$PHP_FILE" ]; then
+	. $PHP_FILE
+	./watch.sh &
+else
+	cp /sample_php.txt /config/sample_php.txt
+	php -S 0.0.0.0:34500 > server.log 2> activitly.log -t /phpserver &
+	./watch.sh &
+fi
+
 XTEVE_FILE=/config/xteve.txt
 
 if [ -f "$XTEVE_FILE" ]; then

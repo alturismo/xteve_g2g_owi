@@ -1,0 +1,6 @@
+php -S 0.0.0.0:34500 > server.log 2> activitly.log -t /phpserver &
+### remove from here including this line ###
+### edit your php command
+### rename to php.txt
+### restart docker, php Server will run with given parameter
+### no php.txt it ll start default values port=34500 /phpserver

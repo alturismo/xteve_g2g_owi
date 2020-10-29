@@ -3,6 +3,7 @@
 ##### Config
 
 use_guide2go="yes"
+use_zap="yes"
 use_owi2plex="yes"
 use_xTeveAPI="yes"
 use_embyAPI="yes"
@@ -16,6 +17,13 @@ JsonList="CBLguide.yaml SATguide.yaml SATSport.yaml"
 
 ### to create your lineups do as follows and follow the instructions
 # docker exec -it <yourdockername> guide2go -configure /guide2go/<lineupnamehere>.yaml
+
+### zap2it variables
+# 
+zap_user="user@mail.com"
+zap_pass="mypassword"
+zap_lineup="canada"
+zap_extras="-U -z"
 
 ### List bouquets to grab from enigma owi
 # sample with 2 buoquets to grab epg
@@ -87,6 +95,13 @@ if [ "$use_owi2plex" = "yes" ]; then
 		do
 		owi2plex -h $owi_ip -u $owi_user -p $owi_pass -b $bouquet -o /owi2plex/enigma$bouquet.xml >> /dev/null
 	done
+fi
+
+sleep 1
+
+# run zap
+if [ "$use_zap" = "yes" ]; then
+	zap2xml.pl -u "$zap_user" -p "$zap_pass" "$zap_extras" -c /zap/"$zap_lineup" -o /zap/"$zap_lineup".xml
 fi
 
 sleep 1
