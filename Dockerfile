@@ -32,7 +32,7 @@ VOLUME /root/.xteve
 VOLUME /tmp/xteve
 
 # Add ffmpeg and vlc
-RUN apk add --no-cache ffmpeg vlc libva-driver-intel
+RUN apk add --no-cache ffmpeg vlc libva-intel-driver
 RUN sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 # Add zap
