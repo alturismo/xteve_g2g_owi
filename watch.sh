@@ -1,6 +1,6 @@
 #!/bin/sh
 
-log_file="/phpserver/activity.log"
+log_file="activity.log"
 log_search="fileSequence"
 
 hls_master="master.m3u8"
