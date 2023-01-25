@@ -6,7 +6,7 @@ RUN apk add --no-cache ca-certificates
 MAINTAINER alturismo alturismo@gmail.com
 
 # Extras
-RUN apk add --no-cache curl php7
+RUN apk add --no-cache curl php
 
 # Install Python3 and owi2plex
 RUN apk add --no-cache python3 py3-pip libxml2 libxml2-dev
