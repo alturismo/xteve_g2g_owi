@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: alpine:latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_HUB_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
+      run:
+        docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+   - name: Docker Push
+     run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/xteve_g2g_owi
