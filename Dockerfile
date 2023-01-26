@@ -11,7 +11,7 @@ RUN apk add --no-cache curl php
 # Install Python3 and owi2plex
 RUN apk add --no-cache python3 py3-pip libxml2 libxml2-dev
 RUN apk add --update --no-cache g++ libxslt-dev python3-dev
-RUN apk add py3-lxml
+RUN apk add py3-lxml --use-pep517
 RUN pip3 install owi2plex
 
 # Timezone (TZ)
