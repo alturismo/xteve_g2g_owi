@@ -14,6 +14,7 @@ RUN apk add --update --no-cache g++ libxslt-dev python3-dev
 RUN pip install click==7.0 requests==2.21.0 lxml==4.9.2 pyyaml==5.4 twine==1.13.0 future==0.17.1
 ADD https://raw.githubusercontent.com/cvarelaruiz/owi2plex/master/owi2plex.py /usr/bin/owi2plex.py
 ADD https://raw.githubusercontent.com/cvarelaruiz/owi2plex/master/version.py /usr/bin/version.py
+RUN chmod +x /usr/bin/owi2plex.py
 
 # Timezone (TZ)
 RUN apk update && apk add --no-cache tzdata
