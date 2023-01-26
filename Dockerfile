@@ -11,8 +11,9 @@ RUN apk add --no-cache curl php
 # Install Python3 and owi2plex
 RUN apk add --no-cache python3 py3-pip libxml2 libxml2-dev
 RUN apk add --update --no-cache g++ libxslt-dev python3-dev
-RUN apk add py3-lxml --use-pep517
-RUN pip3 install owi2plex
+RUN pip install click==7.0 requests==2.21.0 lxml==4.9.2 pyyaml==5.4 twine==1.13.0 future==0.17.1
+COPY https://raw.githubusercontent.com/cvarelaruiz/owi2plex/master/owi2plex.py /usr/bin/owi2plex.py
+COPY https://raw.githubusercontent.com/cvarelaruiz/owi2plex/master/version.py /usr/bin/version.py
 
 # Timezone (TZ)
 RUN apk update && apk add --no-cache tzdata
@@ -53,9 +54,6 @@ ADD sample_xteve.txt /
 ADD sample_php.txt /
 ADD index.php /
 ADD watch.sh /
-
-# Add Fix
-COPY ./owi2plex.py /usr/bin/owi2plex.py
 
 # Set executable permissions
 RUN chmod +x /entrypoint.sh
