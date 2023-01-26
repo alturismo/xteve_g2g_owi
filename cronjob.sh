@@ -145,7 +145,7 @@ fi
 if [ "$use_owi2plex" = "yes" ]; then
 	for bouquet in $bouquets
 		do
-		owi2plex -h $owi_ip -u $owi_user -p $owi_pass -b $bouquet -o /owi2plex/enigma$bouquet.xml >> /dev/null
+		owi2plex.py -h $owi_ip -u $owi_user -p $owi_pass -b $bouquet -o /owi2plex/enigma$bouquet.xml >> /dev/null
 	done
 fi
 
