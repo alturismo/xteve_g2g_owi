@@ -54,6 +54,4 @@ github: https://github.com/cvarelaruiz/owi2plex
 some small script lines cause i personally use tvheadend and get playlist for xteve and cp xml data to tvheadend
 plex and/or emby direct epg update after guide2go update (no wait for scheduled tasks, trigger more often, ...)
 
-Reverse Proxy rewrite to a sep xml file for cached icons, images, ...
-
 so, credits to the programmers, i just putted this together in a docker to fit my needs
