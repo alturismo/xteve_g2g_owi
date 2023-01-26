@@ -1,13 +1,13 @@
 name: Publish Docker image
 
-on:
+on: [push]
   release:
     types: [published]
 
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
+    runs-on: alpine-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
