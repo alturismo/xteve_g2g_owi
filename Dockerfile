@@ -190,6 +190,7 @@ RUN chmod +x /cronjob.sh
 RUN chmod +x /usr/bin/xteve
 RUN chmod +x /usr/bin/guide2go
 
+RUN mkdir /root/.xteve
 RUN chown -R 99:100 /root/.xteve
 # Expose Port
 EXPOSE 34400
