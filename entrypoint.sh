@@ -24,28 +24,6 @@ else
 	cp /sample_cron.txt /config/sample_cron.txt
 fi
 
-PHP_INDEX=/phpserver/index.php
-
-if [ -f "$PHP_INDEX" ]; then
-	echo "Index is here"
-else
-	cp /index.php /phpserver/index.php
-fi
-
-PHP_FILE=/config/php.txt
-
-if [ -f "$PHP_FILE" ]; then
-	. $PHP_FILE
-	touch activity.log
-	nohup ./watch.sh > /dev/null 2>&1 &
-	cp /sample_php.txt /config/sample_php.txt
-else
-	cp /sample_php.txt /config/sample_php.txt
-	php -S 0.0.0.0:34500 > server.log 2> activity.log -t /phpserver &
-	touch activity.log
-	nohup ./watch.sh > /dev/null 2>&1 &
-fi
-
 XTEVE_FILE=/config/xteve.txt
 
 if [ -f "$XTEVE_FILE" ]; then
