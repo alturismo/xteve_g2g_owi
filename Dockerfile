@@ -20,6 +20,7 @@ RUN \
             libx11-6=2:1.6.9-2ubuntu1.2 \
             libxcb1=1.14-2 \
             libxext6=2:1.3.4-0ubuntu1 \
+            unzip \
     && \
     echo "**** Install arch specific packages for $(uname -m) ****" \
         && sleep 2 \
@@ -70,7 +71,7 @@ RUN \
             /tmp/*
 
 # Install commonly used command line tools
-ARG JELLYFIN_FFMPEG_VERSION="4.4.1-4"
+ARG JELLYFIN_FFMPEG_VERSION="5.1.2-9"
 ARG NODEJS_VERSION="16.x"
 RUN \
     echo "**** Install FFmpeg for $(uname -m) ****" \
