@@ -51,10 +51,6 @@ RUN \
                     libva2=2.14.0.2-23 \
                     vainfo=2.14.0.2-1 \
             && \
-            echo "**** Install MESA Media Drivers for AMD VAAPI ****" \
-                && apt-get install -y \
-                    mesa-va-drivers=21.2.6-0ubuntu0.1~20.04.2 \
-            && \
             echo "**** Remove build packages ****" \
                 && apt-get remove -y \
                     gnupg \
@@ -71,8 +67,7 @@ RUN \
             /tmp/*
 
 # Install commonly used command line tools
-ARG JELLYFIN_FFMPEG_VERSION="4.4.1-4"
-ARG NODEJS_VERSION="16.x"
+ARG JELLYFIN_FFMPEG_VERSION="6.0-1"
 RUN \
     echo "**** Install FFmpeg for $(uname -m) ****" \
         && sleep 2 \
@@ -90,10 +85,10 @@ RUN \
                     openssl \
                     locales \
                 &&  curl -ksL \
-                    -o /tmp/jellyfin-ffmpeg_${JELLYFIN_FFMPEG_VERSION}-focal_amd64.deb \
-                    "https://repo.jellyfin.org/releases/server/ubuntu/versions/jellyfin-ffmpeg/${JELLYFIN_FFMPEG_VERSION}/jellyfin-ffmpeg_${JELLYFIN_FFMPEG_VERSION}-focal_amd64.deb" \
+                    -o /tmp/jellyfin-ffmpeg6_${JELLYFIN_FFMPEG_VERSION}-focal_amd64.deb \
+                    "https://repo.jellyfin.org/releases/server/ubuntu/versions/jellyfin-ffmpeg/${JELLYFIN_FFMPEG_VERSION}/jellyfin-ffmpeg6_${JELLYFIN_FFMPEG_VERSION}-focal_amd64.deb" \
                 && apt-get install -y \
-                    /tmp/jellyfin-ffmpeg_${JELLYFIN_FFMPEG_VERSION}-focal_amd64.deb \
+                    /tmp/jellyfin-ffmpeg6_${JELLYFIN_FFMPEG_VERSION}-focal_amd64.deb \
                 && ln -s /usr/lib/jellyfin-ffmpeg/ffmpeg /usr/local/bin/ffmpeg \
                 && ln -s /usr/lib/jellyfin-ffmpeg/ffprobe /usr/local/bin/ffprobe \
             && \
@@ -152,17 +147,7 @@ RUN \
         && apt-get install -y \
             curl \
             nano \
-            sqlite3 \
             wget \
-    && \
-    echo "**** Install NodeJS for $(uname -m) ****" \
-        && curl -fsSL https://deb.nodesource.com/setup_${NODEJS_VERSION} | bash - \
-        && apt-get install -y \
-            nodejs \
-    && \
-    echo "**** Install exiftool for $(uname -m) ****" \
-        && apt-get install -y \
-            libimage-exiftool-perl \
     && \
     echo "**** Section cleanup ****" \
         && apt-get clean autoclean -y \
@@ -177,6 +162,13 @@ ADD guide2go /usr/bin/guide2go
 
 # Add xTeve
 RUN wget https://github.com/xteve-project/xTeVe-Downloads/raw/master/xteve_linux_amd64.zip -O temp.zip; unzip temp.zip -d /usr/bin/; rm temp.zip
+
+# Volumes
+VOLUME /config
+VOLUME /guide2go
+VOLUME /owi2plex
+VOLUME /root/.xteve
+VOLUME /tmp/xteve
 
 # Add Basics
 ADD cronjob.sh /
