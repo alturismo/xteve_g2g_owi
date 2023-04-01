@@ -183,17 +183,12 @@ ADD cronjob.sh /
 ADD entrypoint.sh /
 ADD sample_cron.txt /
 ADD sample_xteve.txt /
-ADD sample_php.txt /
-ADD index.php /
-ADD watch.sh /
 
 # Set executable permissions
 RUN chmod +x /entrypoint.sh
 RUN chmod +x /cronjob.sh
 RUN chmod +x /usr/bin/xteve
-RUN chmod +x /usr/bin/zap2xml.pl
 RUN chmod +x /usr/bin/guide2go
-RUN chmod +x /watch.sh
 
 RUN chown -R 99:100 /root/.xteve
 # Expose Port
