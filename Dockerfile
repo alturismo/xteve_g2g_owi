@@ -11,7 +11,6 @@ RUN \
     echo "**** Install runtime packages ****" \
         && apt-get update \
         && apt-get install -y \
-            libexpat1=2.2.9-1ubuntu0.4 \
             libgl1-mesa-dri=21.2.6-0ubuntu0.1~20.04.2 \
             libglib2.0-0=2.64.6-1~ubuntu20.04.4 \
             libgomp1=10.3.0-1ubuntu1~20.04 \
@@ -21,7 +20,6 @@ RUN \
             libx11-6=2:1.6.9-2ubuntu1.2 \
             libxcb1=1.14-2 \
             libxext6=2:1.3.4-0ubuntu1 \
-            libxml2=2.9.10+dfsg-5ubuntu0.20.04.3 \
     && \
     echo "**** Install arch specific packages for $(uname -m) ****" \
         && sleep 2 \
