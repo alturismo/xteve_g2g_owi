@@ -157,6 +157,14 @@ RUN \
             /var/tmp/* \
             /tmp/*
 
+#Install Python3 and owi2plex
+RUN apt-get update
+RUN apt-get install -y python3 python3-pip libxml2 libxml2-dev
+RUN pip install click==7.0 requests==2.21.0 lxml==4.9.2 pyyaml==5.4 twine==1.13.0 future==0.17.1
+ADD https://raw.githubusercontent.com/cvarelaruiz/owi2plex/master/owi2plex.py /usr/bin/owi2plex.py
+ADD https://raw.githubusercontent.com/cvarelaruiz/owi2plex/master/version.py /usr/bin/version.py
+RUN chmod +x /usr/bin/owi2plex.py
+
 # Add guide2go
 ADD guide2go /usr/bin/guide2go
 
@@ -185,7 +193,7 @@ RUN chmod +x /usr/bin/guide2go
 RUN mkdir /root/.xteve
 RUN chown -R 99:100 /root/.xteve
 # Expose Port
-EXPOSE 34400
+EXPOSE 34400 8080
 
 # Entrypoint
 ENTRYPOINT ["./entrypoint.sh"]
