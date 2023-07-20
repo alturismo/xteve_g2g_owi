@@ -71,7 +71,7 @@ RUN mkdir -p /root/.xteve && chown -R 99:100 /root/.xteve
 # Expose Port
 EXPOSE 34400
 
-RUN find /tmp/ffmpeg-6.0/ -type d -print0 -exec rm -rf {} +
+RUN rm /tmp/ffmpeg-6.0.tar.xz
 
 # Entrypoint
 ENTRYPOINT ["./entrypoint.sh"]
