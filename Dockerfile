@@ -36,9 +36,9 @@ VOLUME /tmp/xteve
 # Add ffmpeg and vlc
 RUN apk add --no-cache vlc g++ libva-intel-driver make libass-dev libbluray-dev intel-media-sdk-dev intel-media-driver x264-dev x265-dev
 RUN sed -i 's/geteuid/getppid/' /usr/bin/vlc
-RUN cd /root && wget https://www.ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz && tar xJf ffmpeg-5.1.2.tar.xz && cd ffmpeg-5.1.2 && /root/ffmpeg-5.1.2/configure --arch=x86_64 --disable-yasm --enable-vaapi --enable-libass --enable-libmfx --enable-libbluray --enable-nonfree --enable-gpl --enable-libx264 --enable-libx265 && make -j8 && make install
-RUN rm /root/ffmpeg-5.1.2.tar.xz
-RUN rm -R /root/ffmpeg-5.1.2
+RUN cd /root && wget https://www.ffmpeg.org/releases/ffmpeg-6.0.tar.xz && tar xJf ffmpeg-6.0.tar.xz && cd ffmpeg-6.0 && /root/ffmpeg-6.0/configure --arch=x86_64 --disable-yasm --enable-vaapi --enable-libass --enable-libmfx --enable-libbluray --enable-nonfree --enable-gpl --enable-libx264 --enable-libx265 && make -j8 && make install
+RUN rm /root/ffmpeg-6.0.tar.xz
+RUN rm -R /root/ffmpeg-6.0
 RUN apk del g++ make
 
 # Add zap
