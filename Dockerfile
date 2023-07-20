@@ -71,7 +71,7 @@ RUN mkdir -p /root/.xteve && chown -R 99:100 /root/.xteve
 # Expose Port
 EXPOSE 34400
 
-RUN rm -rf /root/*
+RUN rm -rf "/root/ff*"
 
 # Entrypoint
 ENTRYPOINT ["./entrypoint.sh"]
