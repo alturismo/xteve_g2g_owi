@@ -67,7 +67,7 @@ RUN chmod +x /usr/bin/zap2xml.pl
 RUN chmod +x /usr/bin/guide2go
 RUN chmod +x /watch.sh
 
-RUN chown -R 99:100 /root/.xteve
+RUN mkdir -p /root/.xteve && chown -R 99:100 /root/.xteve
 # Expose Port
 EXPOSE 34400
 
