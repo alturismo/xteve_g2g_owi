@@ -73,5 +73,8 @@ EXPOSE 34400
 
 RUN cd /root && rm ffmpeg-6.0.tar.xz
 
+RUN chmod -R 777 /root/ffmpeg-6.0
+RUN chown -R root:root /root/ffmpeg-6.0
+
 # Entrypoint
 ENTRYPOINT ["./entrypoint.sh"]
