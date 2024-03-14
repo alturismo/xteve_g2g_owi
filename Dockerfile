@@ -11,6 +11,7 @@ RUN apk add --no-cache curl php
 # Install Python3 and owi2plex
 RUN apk add --no-cache python3 py3-pip libxml2 libxml2-dev
 RUN apk add --update --no-cache g++ libxslt-dev python3-dev
+RUN rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 RUN pip install click==8.1.7 requests==2.31.0 lxml==5.1.0 pyyaml==6.0.1 twine==5.0.0 future==1.0.0
 ADD https://raw.githubusercontent.com/cvarelaruiz/owi2plex/master/owi2plex.py /usr/bin/owi2plex.py
 ADD https://raw.githubusercontent.com/cvarelaruiz/owi2plex/master/version.py /usr/bin/version.py
